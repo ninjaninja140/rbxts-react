@@ -1,0 +1,9 @@
+[submodule "references/react"]
+	path = references/react
+	url = https://github.com/facebook/react.git
+[submodule "references/react-lua"]
+	path = references/react-lua
+	url = https://github.com/rbxts-js/react-lua.git
+[submodule "references/rbxts-react"]
+	path = references/rbxts-react
+	url = https://github.com/littensy/rbxts-react.git
