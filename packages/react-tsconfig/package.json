@@ -1,0 +1,28 @@
+{
+	"name": "@nrbx/react-tsconfig",
+	"version": "19.0.0",
+	"description": "Shared TypeScript configuration for @nrbx/react roblox-ts projects. Extend @nrbx/react-tsconfig in your tsconfig.json to get the correct JSX, types, and compiler settings for React.",
+	"author": "ninjaninja140",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ninjaninja140/rbxts-react.git",
+		"directory": "packages/react-tsconfig"
+	},
+	"keywords": [
+		"roblox-ts",
+		"react",
+		"tsconfig",
+		"nrbx"
+	],
+	"files": [
+		"tsconfig.base.json",
+		"tsconfig.json",
+		"tsconfig.client.json",
+		"tsconfig.server.json",
+		"tsconfig.strict.json"
+	],
+	"peerDependencies": {
+		"typescript": ">=5.0.0"
+	}
+}

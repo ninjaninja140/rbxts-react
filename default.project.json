@@ -1,0 +1,42 @@
+{
+	"name": "rbxts-react",
+	"tree": {
+		"$className": "Folder",
+		"include": {
+			"$path": "include"
+		},
+		"react": {
+			"$path": "out/react/src"
+		},
+		"react-roblox": {
+			"$path": "out/react-roblox/src"
+		},
+		"react-globals": {
+			"$path": "out/react-globals/src"
+		},
+		"react-devtools": {
+			"$path": "out/react-devtools/src"
+		},
+		"react-devtools-core": {
+			"$path": "out/react-devtools-core/src"
+		},
+		"react-is": {
+			"$path": "out/react-is/src"
+		},
+		"react-debug-tools": {
+			"$path": "out/react-debug-tools/src"
+		},
+		"react-builders": {
+			"$path": "out/react-builders/src"
+		},
+		"react-shared": {
+			"$path": "out/react-shared/src"
+		},
+		"react-reconciler": {
+			"$path": "out/react-reconciler/src"
+		},
+		"scheduler": {
+			"$path": "out/scheduler/src"
+		}
+	}
+}

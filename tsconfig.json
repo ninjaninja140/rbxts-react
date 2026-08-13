@@ -1,0 +1,46 @@
+{
+	"compilerOptions": {
+		// required
+		"allowSyntheticDefaultImports": true,
+		"downlevelIteration": true,
+		"jsx": "react",
+		"jsxFactory": "React.createElement",
+		"jsxFragmentFactory": "React.createFragment",
+		"module": "commonjs",
+		"moduleResolution": "Node",
+		"noLib": true,
+		"resolveJsonModule": true,
+		"experimentalDecorators": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleDetection": "force",
+		"strict": true,
+		"target": "ESNext",
+		"typeRoots": ["node_modules/@rbxts"],
+
+		// configurable
+		"rootDir": "packages",
+		"outDir": "out",
+		"incremental": true,
+		"tsBuildInfoFile": "out/tsconfig.tsbuildinfo",
+		"declaration": true,
+
+		"paths": {
+			"*": ["./*"],
+			"@nrbx/react": ["./packages/react/src"],
+			"@nrbx/react/core": ["./packages/react/src/core"],
+			"@nrbx/react-roblox": ["./packages/react-roblox/src"],
+			"@nrbx/react-globals": ["./packages/react-globals/src"],
+			"@nrbx/react-devtools": ["./packages/react-devtools/src"],
+			"@nrbx/react-devtools-core": ["./packages/react-devtools-core/src"],
+			"@nrbx/react-is": ["./packages/react-is/src"],
+			"@nrbx/scheduler": ["./packages/scheduler/src"],
+			"@nrbx/react-debug-tools": ["./packages/react-debug-tools/src"],
+			"@nrbx/react-builders": ["./packages/react-builders/src"],
+			"@nrbx/react-shared": ["./packages/react-shared/src"],
+			"@nrbx/react-reconciler": ["./packages/react-reconciler/src"],
+			"@nrbx/react-tsconfig": ["./packages/react-tsconfig"]
+		}
+	},
+	"include": ["packages/**/*"],
+	"exclude": ["references", "node_modules", "out"]
+}
