@@ -43,6 +43,7 @@ jobs:
             mkdir wiki-out
             cd wiki-out
             git init
+            git branch -m main
             git remote add origin "$wiki_url"
             # Create an initial empty commit
             git commit --allow-empty -m "Initialize wiki"
