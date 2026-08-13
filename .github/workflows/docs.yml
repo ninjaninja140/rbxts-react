@@ -43,11 +43,17 @@ jobs:
             mkdir wiki-out
             cd wiki-out
             git init
-            git branch -m main
+            
+            # Create an initial commit
+            echo "# Wiki" > README.md
+            git add README.md
+            git commit -m "Initialize wiki"
+            
+            # Add remote
             git remote add origin "$wiki_url"
-            # Create an initial empty commit
-            git commit --allow-empty -m "Initialize wiki"
-            git push -u origin main
+            
+            # Push to the default branch (GitHub wikis use 'master' as default)
+            git push -u origin master
             cd ..
           fi
 
@@ -61,5 +67,6 @@ jobs:
             echo "No changes to the wiki."
           else
             git commit -m "Sync wiki from ${GITHUB_SHA}"
-            git push origin main
+            # Push to whatever branch exists (master or main)
+            git push origin HEAD:master || git push origin HEAD:main
           fi
