@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"jsxImportSource": "@nrbx/react",
+		"strict": true,
+		"typeRoots": ["node_modules/@rbxts", "node_modules/@nrbx"],
+		"baseUrl": ".",
+		"paths": {
+			"@client/*": ["src/client/*"],
+			"@server/*": ["src/server/*"],
+			"@shared/*": ["src/shared/*"]
+		}
+	},
+	"include": ["src"]
+}

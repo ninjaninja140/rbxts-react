@@ -1,0 +1,20 @@
+{
+	"name": "@nrbx/react-roblox",
+	"version": "19.0.0",
+	"description": "React DOM bindings for Roblox",
+	"main": "src/init.luau",
+	"types": "src/index.d.ts",
+	"author": "ninjaninja140",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ninjaninja140/rbxts-react.git"
+	},
+	"dependencies": {
+		"@nrbx/react-reconciler": "workspace:^",
+		"@nrbx/react-shared": "workspace:^"
+	},
+	"peerDependencies": {
+		"@nrbx/react": "workspace:^"
+	}
+}

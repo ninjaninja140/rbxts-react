@@ -1,0 +1,13 @@
+{
+	"name": "@nrbx/react-devtools-core",
+	"version": "19.0.0",
+	"description": "React DevTools Core bindings for Roblox",
+	"main": "src/init.luau",
+	"types": "src/index.d.ts",
+	"author": "ninjaninja140",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ninjaninja140/rbxts-react.git"
+	}
+}

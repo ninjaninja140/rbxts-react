@@ -1,0 +1,50 @@
+name: Update Wiki
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/wiki/**"
+
+permissions:
+  contents: write
+
+jobs:
+  update-wiki:
+    name: Sync docs/wiki to the GitHub wiki
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync wiki
+        env:
+          WIKI_TOKEN: ${{ secrets.WIKI_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          repo="${GITHUB_REPOSITORY}"
+          wiki_url="https://x-access-token:${WIKI_TOKEN}@github.com/${repo}.wiki.git"
+
+          git clone "$wiki_url" wiki-out
+          rm -rf wiki-out/*
+          cp -r docs/wiki/. wiki-out/
+          rm -f wiki-out/.gitignore
+
+          cd wiki-out
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to the wiki."
+          else
+            git commit -m "Sync wiki from ${GITHUB_SHA}"
+            git push origin master
+          fi

@@ -1,0 +1,61 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Build and publish packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 26
+          cache: yarn
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build
+        run: npx rbxtsc
+
+      - name: Publish packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -euo pipefail
+          # Publish leaf packages before the packages that depend on them.
+          publish_order=(
+            "@nrbx/scheduler"
+            "@nrbx/react-shared"
+            "@nrbx/react-globals"
+            "@nrbx/react-is"
+            "@nrbx/react-tsconfig"
+            "@nrbx/react-devtools-core"
+            "@nrbx/react-reconciler"
+            "@nrbx/react"
+            "@nrbx/react-devtools"
+            "@nrbx/react-debug-tools"
+            "@nrbx/react-roblox"
+            "@nrbx/react-builders"
+          )
+          for name in "${publish_order[@]}"; do
+            echo "Publishing $name"
+            npm publish --workspace "$name" --access public
+          done

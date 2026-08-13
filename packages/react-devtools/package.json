@@ -1,0 +1,16 @@
+{
+	"name": "@nrbx/react-devtools",
+	"version": "19.0.0",
+	"description": "Connect to React DevTools by importing",
+	"main": "src/init.luau",
+	"types": "src/index.d.ts",
+	"author": "ninjaninja140",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ninjaninja140/rbxts-react.git"
+	},
+	"dependencies": {
+		"@nrbx/react-devtools-core": "workspace:^"
+	}
+}
