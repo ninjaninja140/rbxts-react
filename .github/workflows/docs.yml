@@ -35,13 +35,27 @@ jobs:
           repo="${GITHUB_REPOSITORY}"
           wiki_url="https://x-access-token:${WIKI_TOKEN}@github.com/${repo}.wiki.git"
 
-          git clone "$wiki_url" wiki-out
-          rm -rf wiki-out/*
-          cp -r docs/wiki/. wiki-out/
-          rm -f wiki-out/.gitignore
+          # Try to clone, or initialize if it doesn't exist
+          if git clone "$wiki_url" wiki-out 2>/dev/null; then
+            echo "Wiki repository cloned successfully"
+          else
+            echo "Wiki repository doesn't exist yet. Creating it..."
+            mkdir wiki-out
+            cd wiki-out
+            git init
+            git remote add origin "$wiki_url"
+            # Create an initial empty commit
+            git commit --allow-empty -m "Initialize wiki"
+            git push -u origin main
+            cd ..
+          fi
 
+          # Copy files from docs/wiki
+          cp -r docs/wiki/. wiki-out/
+          
           cd wiki-out
           git add -A
+          
           if git diff --cached --quiet; then
             echo "No changes to the wiki."
           else
