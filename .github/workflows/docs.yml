@@ -33,7 +33,7 @@ jobs:
           set -euo pipefail
 
           repo="${GITHUB_REPOSITORY}"
-          wiki_url="https://x-access-token:${WIKI_TOKEN}@github.com/${repo}.git"
+          wiki_url="https://x-access-token:${WIKI_TOKEN}@github.com/${repo}.wiki.git"
 
           git clone "$wiki_url" wiki-out
           rm -rf wiki-out/*
